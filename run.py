@@ -27,6 +27,8 @@ def home_screen():
         add_new_name()
     elif option_choice == 2:
         change_pin()
+    elif option_choice == 3:
+        withdraw_cash()
     else:
         print('Invalid selection!')
         home_screen()
@@ -62,6 +64,7 @@ def add_new_balance():
     accounts_data = accounts.col_values(1)
     account_current_number = len(accounts_data)
     print(f'Your account number is {account_current_number}. Don\'t forget to write it down!')
+    print('THANK YOU, COME AGAIN!')
     
 def match_new_pin():
     global account_number
@@ -70,6 +73,7 @@ def match_new_pin():
     if first_attempt == second_attempt:
         accounts.update_cell(account_number, 2, second_attempt)
         print(f'PIN change successful! Your new PIN is {second_attempt}.\n')
+        print('THANK YOU, COME AGAIN!')
     else:
         print('Your PIN did not match! Please try again.')
         match_new_pin()
@@ -83,6 +87,48 @@ def change_pin():
         customer_name = accounts.cell(account_number, 1).value
         print(f'Welcome back {customer_name}\n')
         match_new_pin()
+    else: 
+        print('Your information is incorrect! Please check and try again.\n')
+        change_pin()
+
+
+def withdraw_cash():
+    global account_number
+    global balance
+    account_number = input('Please enter your account number: \n')
+    old_pin = accounts.cell(account_number, 2).value
+    current_pin = input('Please enter your current pin and press enter: \n')
+    if old_pin == current_pin:
+        customer_name = accounts.cell(account_number, 1).value
+        print(f'Welcome back {customer_name}\n')
+        balance = int(accounts.cell(account_number, 3).value) 
+        print(f'You current balance is {balance}.\n')
+        print('---------------------------')
+        withdraw_money()
+    else:
+        print('Your information is incorrect! Please check and try again.\n')
+        withdraw_cash()
+        
+def withdraw_money():
+    global balance     
+    withdrawal_amount = int(input('Your withdrawal must be a multiple of 10. Please enter your withdrawal amount and press enter: '))
+    if withdrawal_amount % 10 > 0:
+        print('Invalid amount! Please enter a multiple of 10.\n')
+        withdraw_money()
+    elif balance < withdrawal_amount:
+        print('Insufficient funds! Please enter a lesser amount.\n')
+    else:
+        print('Withdrawal successful! Please collect your ${withdrawal_amount} from the disk drive.')
+        new_balance = balance - withdrawal_amount
+        print(f'Your new balance is {new_balance}')
+        accounts.update_cell(account_number, 2, new_balance)
+        print('THANK YOU, COME AGAIN!')
+    
+
+
+
+        
+
         
 
 
