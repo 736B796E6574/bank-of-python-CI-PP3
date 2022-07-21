@@ -4,6 +4,19 @@
 
 new_user = []
 
+def home_screen():
+    print('\nWelcome to the Bank of Python\n')
+    option_choice = int(input('Please select from the following options by entering the corresponding number.\n1. Create a new account.\n2. Change your pin.\n3. Make a withdrawal.\n\nEnter your selection number then press enter: '))
+    if option_choice == 1:
+        add_new_name()
+    elif option_choice == 2:
+        change_pin()
+    else:
+        print('Invalid selection!')
+        home_screen()
+
+
+
 def add_new_name():
     global new_user
     new_account_name = input('Please enter your full name:')
@@ -31,5 +44,6 @@ def add_new_balance():
 
 
 
-add_new_name()
+home_screen()
+
 print(new_user)
