@@ -2,6 +2,7 @@
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
+from re import match
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -17,6 +18,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Bank_of_Python')
 accounts = SHEET.worksheet('Accounts')
 new_user = []
+account_number = 1
 
 def home_screen():
     print('\nWelcome to the Bank of Python\n')
@@ -54,9 +56,36 @@ def add_new_balance():
     new_deposit = int(input('Please enter your deposit amount, without commas: \n'))
     print(f'You entered {new_deposit}. Updating your account...\n')
     new_user.append(new_deposit)
-    print('Deposit successfull!\n')
+    print('Deposit successful!\n')
     accounts.append_row(new_user)
     print('Your account creation was successful!\n')
+    accounts_data = accounts.col_values(1)
+    account_current_number = len(accounts_data)
+    print(f'Your account number is {account_current_number}. Don\'t forget to write it down!')
+    
+def match_new_pin():
+    global account_number
+    first_attempt = input('Please enter your new PIN and press enter: \n')
+    second_attempt = input('Please enter your new PIN again and press enter: \n')
+    if first_attempt == second_attempt:
+        accounts.update_cell(account_number, 2, second_attempt)
+        print(f'PIN change successful! Your new PIN is {second_attempt}.\n')
+    else:
+        print('Your PIN did not match! Please try again.')
+        match_new_pin()
+
+def change_pin():
+    global account_number
+    account_number = input('Please enter your account number: \n')
+    old_pin = accounts.cell(account_number, 2).value
+    current_pin = input('Please enter your current pin and press enter: \n')
+    if old_pin == current_pin:
+        customer_name = accounts.cell(account_number, 1).value
+        print(f'Welcome back {customer_name}\n')
+        match_new_pin()
+        
+
+
 
 
 
