@@ -4,6 +4,8 @@
 
 from re import match
 import gspread
+import os
+import time
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -26,14 +28,12 @@ def home_screen():
     if option_choice == 1:
         add_new_name()
     elif option_choice == 2:
-        change_pin()
+        change_pin_security()
     elif option_choice == 3:
-        withdraw_cash()
+        withdrawal_security()
     else:
         print('Invalid selection!')
         home_screen()
-
-
 
 def add_new_name():
     global new_user
@@ -65,8 +65,11 @@ def add_new_balance():
     account_current_number = len(accounts_data)
     print(f'Your account number is {account_current_number}. Don\'t forget to write it down!')
     print('THANK YOU, COME AGAIN!')
+    time.sleep(5)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    home_screen()
     
-def match_new_pin():
+def change_pin():
     global account_number
     first_attempt = input('Please enter your new PIN and press enter: \n')
     second_attempt = input('Please enter your new PIN again and press enter: \n')
@@ -74,11 +77,14 @@ def match_new_pin():
         accounts.update_cell(account_number, 2, second_attempt)
         print(f'PIN change successful! Your new PIN is {second_attempt}.\n')
         print('THANK YOU, COME AGAIN!')
+        time.sleep(5)
+        os.system('cls' if os.name == 'nt' else 'clear')
+        home_screen()
     else:
         print('Your PIN did not match! Please try again.')
-        match_new_pin()
+        change_pin()
 
-def change_pin():
+def change_pin_security():
     global account_number
     account_number = input('Please enter your account number: \n')
     old_pin = accounts.cell(account_number, 2).value
@@ -86,13 +92,13 @@ def change_pin():
     if old_pin == current_pin:
         customer_name = accounts.cell(account_number, 1).value
         print(f'Welcome back {customer_name}\n')
-        match_new_pin()
+        change_pin()
     else: 
         print('Your information is incorrect! Please check and try again.\n')
-        change_pin()
+        change_pin_security()
 
 
-def withdraw_cash():
+def withdrawal_security():
     global account_number
     global balance
     account_number = input('Please enter your account number: \n')
@@ -107,7 +113,7 @@ def withdraw_cash():
         withdraw_money()
     else:
         print('Your information is incorrect! Please check and try again.\n')
-        withdraw_cash()
+        withdrawal_security()
         
 def withdraw_money():
     global balance     
@@ -118,11 +124,14 @@ def withdraw_money():
     elif balance < withdrawal_amount:
         print('Insufficient funds! Please enter a lesser amount.\n')
     else:
-        print('Withdrawal successful! Please collect your ${withdrawal_amount} from the disk drive.')
+        print(f'Withdrawal successful! Please collect your ${withdrawal_amount} from the disk drive.')
         new_balance = balance - withdrawal_amount
         print(f'Your new balance is {new_balance}')
-        accounts.update_cell(account_number, 2, new_balance)
+        accounts.update_cell(account_number, 3, new_balance)
         print('THANK YOU, COME AGAIN!')
+        time.sleep(5)
+        os.system('cls' if os.name == 'nt' else 'clear')
+        home_screen()
     
 
 
