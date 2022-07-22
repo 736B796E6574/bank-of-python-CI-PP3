@@ -40,33 +40,46 @@ def home_screen():
 
 def add_new_name():
     global new_user
-    new_account_name = input('Please enter your full name:')
+    new_account_name = input('Please enter your full name: \n')
     print(f'Opening account for {new_account_name}…\n')
+    time.sleep(2)
     new_user.append(new_account_name)
     print('Account created successfully!\n')
+    time.sleep(2)
+    os.system('cls' if os.name == 'nt' else 'clear')
     add_new_pin()
 
 def add_new_pin():
     new_account_pin = int(input('Please enter a 4 digit numerical pin\n'))
     if new_account_pin < 9999:
         print('Saving PIN…')
+        time.sleep(2)
         new_user.append(new_account_pin)
         print('PIN Saved!\n')
+        time.sleep(2)
+        os.system('cls' if os.name == 'nt' else 'clear')
         add_new_balance()
     else:
+        os.system('cls' if os.name == 'nt' else 'clear')
         print('Invalid entry!')
+        time.sleep(2)
+        os.system('cls' if os.name == 'nt' else 'clear')
         add_new_pin()
 
 def add_new_balance():
+    os.system('cls' if os.name == 'nt' else 'clear')
     new_deposit = int(input('Please enter your deposit amount, without commas: \n'))
     print(f'You entered {new_deposit}. Updating your account...\n')
+    time.sleep(2)
     new_user.append(new_deposit)
     print('Deposit successful!\n')
+    time.sleep(2)
+    os.system('cls' if os.name == 'nt' else 'clear')
     accounts.append_row(new_user)
     print('Your account creation was successful!\n')
     accounts_data = accounts.col_values(1)
     account_current_number = len(accounts_data)
-    print(f'Your account number is {account_current_number}. Don\'t forget to write it down!')
+    print(f'Your account number is {account_current_number}. Don\'t forget to write it down!\n')
     print('THANK YOU, COME AGAIN!')
     time.sleep(5)
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -74,6 +87,7 @@ def add_new_balance():
     
 def change_pin():
     global account_number
+    os.system('cls' if os.name == 'nt' else 'clear')
     first_attempt = input('Please enter your new PIN and press enter: \n')
     second_attempt = input('Please enter your new PIN again and press enter: \n')
     if first_attempt == second_attempt:
@@ -85,48 +99,66 @@ def change_pin():
         home_screen()
     else:
         print('Your PIN did not match! Please try again.')
+        time.sleep(2)
         change_pin()
 
 def change_pin_security():
     global account_number
+    os.system('cls' if os.name == 'nt' else 'clear')
     account_number = input('Please enter your account number: \n')
     old_pin = accounts.cell(account_number, 2).value
     current_pin = input('Please enter your current pin and press enter: \n')
     if old_pin == current_pin:
+        os.system('cls' if os.name == 'nt' else 'clear')
         customer_name = accounts.cell(account_number, 1).value
         print(f'Welcome back {customer_name}\n')
+        time.sleep(2)
         change_pin()
-    else: 
+    else:
+        os.system('cls' if os.name == 'nt' else 'clear')
         print('Your information is incorrect! Please check and try again.\n')
+        time.sleep(2)
         change_pin_security()
 
 
 def withdrawal_security():
     global account_number
     global balance
+    os.system('cls' if os.name == 'nt' else 'clear')
     account_number = input('Please enter your account number: \n')
     old_pin = accounts.cell(account_number, 2).value
     current_pin = input('Please enter your current pin and press enter: \n')
     if old_pin == current_pin:
+        os.system('cls' if os.name == 'nt' else 'clear')
         customer_name = accounts.cell(account_number, 1).value
         print(f'Welcome back {customer_name}\n')
         balance = int(accounts.cell(account_number, 3).value) 
         print(f'You current balance is {balance}.\n')
         print('---------------------------')
+        time.sleep(3)
         withdraw_money()
     else:
+        os.system('cls' if os.name == 'nt' else 'clear')
         print('Your information is incorrect! Please check and try again.\n')
+        time.sleep(2)
         withdrawal_security()
         
 def withdraw_money():
-    global balance     
+    global balance  
+    os.system('cls' if os.name == 'nt' else 'clear')   
     withdrawal_amount = int(input('Your withdrawal must be a multiple of 10. Please enter your withdrawal amount and press enter: '))
     if withdrawal_amount % 10 > 0:
+        os.system('cls' if os.name == 'nt' else 'clear')
         print('Invalid amount! Please enter a multiple of 10.\n')
+        time.sleep(2)
         withdraw_money()
     elif balance < withdrawal_amount:
+        os.system('cls' if os.name == 'nt' else 'clear')
         print('Insufficient funds! Please enter a lesser amount.\n')
+        time.sleep(2)
+        withdraw_money()
     else:
+        os.system('cls' if os.name == 'nt' else 'clear')
         print(f'Withdrawal successful! Please collect your ${withdrawal_amount} from the disk drive.')
         new_balance = balance - withdrawal_amount
         print(f'Your new balance is {new_balance}')
@@ -136,17 +168,6 @@ def withdraw_money():
         os.system('cls' if os.name == 'nt' else 'clear')
         home_screen()
     
-
-
-
-        
-
-        
-
-
-
-
-
 home_screen()
 
 
