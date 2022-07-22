@@ -26,9 +26,12 @@ def home_screen():
     print('\nWelcome to the Bank of Python\n')
     option_choice = int(input('Please select from the following options by entering the corresponding number.\n1. Create a new account.\n2. Change your pin.\n3. Make a withdrawal.\n\nEnter your selection number then press enter: '))
     if option_choice == 1:
+        os.system('cls' if os.name == 'nt' else 'clear')
         add_new_name()
     elif option_choice == 2:
+        os.system('cls' if os.name == 'nt' else 'clear')
         change_pin_security()
+        os.system('cls' if os.name == 'nt' else 'clear')
     elif option_choice == 3:
         withdrawal_security()
     else:
