@@ -174,13 +174,19 @@ def change_pin():
     os.system('cls' if os.name == 'nt' else 'clear')
     try:
         first_attempt = int(input('Please enter your new PIN and press enter: \n'))
-        second_attempt = int(input('Please enter your new PIN again and press enter: \n'))
+        if first_attempt < 9999 and len(str(first_attempt)) == 4:
+            second_attempt = int(input('Please enter your new PIN again and press enter: \n'))
+        else:
+            print('Invalid entry. Please enter a 4 digit number.')
+            clear_screen(2)
+            change_pin()
+
     except ValueError as e:
         print('You did not enter a number. Please start again.')
         clear_screen(2)
         change_pin()
 
-    if new_account_pin < 9999 and len(str(new_account_pin)) == 4:
+    if first_attempt < 9999 and len(str(first_attempt)) == 4:
         if first_attempt == second_attempt:
             accounts.update_cell(account_number, 2, second_attempt)
             print(f'PIN change successful! Your new PIN is {second_attempt}.\n')
