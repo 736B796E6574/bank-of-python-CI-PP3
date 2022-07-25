@@ -212,7 +212,7 @@ def withdraw_money():
     os.system('cls' if os.name == 'nt' else 'clear')   
     
     try:
-        withdrawal_amount = int(input('Your withdrawal must be a multiple of 10. Please enter your withdrawal amount and press enter: '))
+        withdrawal_amount = int(input('Your withdrawal must be a multiple of 10. \nPlease enter your withdrawal amount and press enter: '))
     except ValueError as e:
         print('Invalid input!')
         time.sleep(2)
