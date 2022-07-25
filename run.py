@@ -21,6 +21,9 @@ SHEET = GSPREAD_CLIENT.open('Bank_of_Python')
 accounts = SHEET.worksheet('Accounts')
 new_user = []
 account_number = 1
+accounts_data = accounts.col_values(1)
+account_current_number = len(accounts_data)
+
 
 def home_screen():
     print('\nWelcome to the Bank of Python\n')
@@ -96,6 +99,8 @@ def add_new_pin():
         add_new_pin()
 
 def add_new_balance():
+    global account_current_number
+    global accounts_data
     os.system('cls' if os.name == 'nt' else 'clear')
     try:
         new_deposit = int(input('Please enter your deposit amount, without commas: \n'))
@@ -155,6 +160,12 @@ def change_pin_security():
         time.sleep(2)
         os.system('cls' if os.name == 'nt' else 'clear')
         change_pin_security()
+    if account_number < 1 or account_number > account_current_number:
+        print('Invalid entry!')
+        time.sleep(2)
+        os.system('cls' if os.name == 'nt' else 'clear')
+        change_pin_security()
+
     old_pin = accounts.cell(account_number, 2).value
     current_pin = input('Please enter your current pin and press enter: \n')
     if old_pin == current_pin:
@@ -173,11 +184,19 @@ def change_pin_security():
 def withdrawal_security():
     global account_number
     global balance
+    global account_current_number
+    global accounts_data
     os.system('cls' if os.name == 'nt' else 'clear')
     try:
         account_number = int(input('Please enter your account number: \n'))
     except ValueError as e:
         print('Invalid input.')
+        time.sleep(2)
+        os.system('cls' if os.name == 'nt' else 'clear')
+        withdrawal_security()
+    
+    if account_number < 1 or account_number > account_current_number:
+        print('Invalid entry!')
         time.sleep(2)
         os.system('cls' if os.name == 'nt' else 'clear')
         withdrawal_security()
