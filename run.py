@@ -6,6 +6,7 @@ from re import match
 import gspread
 import os
 import time
+import pyfiglet
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -35,7 +36,8 @@ def home_screen():
     """
     Offers the main menu options to the user. Takes a number input from the user and calls the function to offer the selected menu option.
     """
-    print('\nWelcome to the Bank of Python\n')
+    
+    print(pyfiglet.figlet_format("Bank of Python", justify="center"))
     try:
         option_choice = int(input('Please select from the following options by entering the corresponding number.\n1. Create a new account.\n2. Change your pin.\n3. Make a withdrawal.\n4. Exit program.\n\nEnter your selection number then press enter: '))
     except ValueError as e:
@@ -153,7 +155,7 @@ def change_pin_security():
         change_pin_security()
 
     old_pin = accounts.cell(account_number, 2).value
-    current_pin = input('Please enter your current pin and press enter: \n')
+    current_pin = input('Please enter your current PIN and press enter: \n')
     if old_pin == current_pin:
         os.system('cls' if os.name == 'nt' else 'clear')
         customer_name = accounts.cell(account_number, 1).value
@@ -168,7 +170,7 @@ def change_pin_security():
     
 def change_pin():
     """
-    Asks for the new pin 2 times and they must match each other. It is the last function in this option.
+    Asks for the new PIN 2 times and they must match each other. It is the last function in this option.
     """
     global account_number
     os.system('cls' if os.name == 'nt' else 'clear')
