@@ -56,6 +56,7 @@ def home_screen():
     elif option_choice == 3:
         withdrawal_security()
     elif option_choice == 4:
+        clear_screen(2)
         quit()
     else:
         print('Invalid selection!')
