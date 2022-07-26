@@ -17,3 +17,8 @@ The Bank of Python is a banking application that allows customers to open an acc
 * Deployment
 * Libraries
 * Acknowledgement
+
+## Design
+
+![Flowcharts - Algorithm flowchart example (1)](https://user-images.githubusercontent.com/98256205/181049018-40b20bf3-34fe-4d77-b31f-7bf2a5a76c16.jpeg)
+
