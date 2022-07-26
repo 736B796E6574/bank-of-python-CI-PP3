@@ -33,4 +33,9 @@ Upon startup the program display a welcome screen. This includes a logo, options
 
 This option allows the user to enter their name, a PIN and a balance to be deposited. A unique account number is then created and assigned to the account after the details are pushed to the database. This account number is then shared with the user who will need it to access the account in future. 
 
+![Screenshot 2022-07-26 at 16 49 23](https://user-images.githubusercontent.com/98256205/181052281-b8c54d8c-aa45-45a3-b493-25fd37c6b819.png)
+![Screenshot 2022-07-26 at 16 49 40](https://user-images.githubusercontent.com/98256205/181052316-43ebbeee-2899-484a-9a5e-6b593ccf8d2d.png)
+![Screenshot 2022-07-26 at 16 50 01](https://user-images.githubusercontent.com/98256205/181052370-4bdadb93-0323-4b4d-9434-c4158859982c.png)
+![Screenshot 2022-07-26 at 16 50 10](https://user-images.githubusercontent.com/98256205/181052382-3182bb60-ea70-4a74-ab27-87a69aff3f46.png)
+
 
