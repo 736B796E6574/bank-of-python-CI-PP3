@@ -58,3 +58,6 @@ This option allows the user to make a withdrawal. It requires that the user with
 ![Screenshot 2022-07-26 at 16 59 04](https://user-images.githubusercontent.com/98256205/181054389-c0c6d492-f519-4639-ba29-7f74002b5f12.png)
 ![Screenshot 2022-07-26 at 16 59 32](https://user-images.githubusercontent.com/98256205/181054405-d2040615-65e8-448a-8272-13e61afbf91e.png)
 
+### Exit Program
+
+This option terminates the program.
