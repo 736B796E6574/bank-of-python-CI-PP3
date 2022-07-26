@@ -5,7 +5,7 @@
 
 The Bank of Python is a banking application that allows customers to open an account to deposit with the bank. They can change their PIN and also make a withdrawal, should they have the requested funds available in their account.
 
-![](https://file%2B.vscode-resource.vscode-cdn.net/Users/MartinMcInerney/Desktop/Screenshot%202022-07-26%20at%2015.55.04.png?version%3D1658847347749)
+![Screenshot 2022-07-26 at 15 55 04](https://user-images.githubusercontent.com/98256205/181040933-0c0e34be-bd76-49ca-babb-fce91cbe972b.png)
 
 ## Table of Contents
 * Design
