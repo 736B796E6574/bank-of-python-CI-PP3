@@ -5,6 +5,8 @@
 from re import match
 import gspread
 import os
+import sys
+import subprocess
 import time
 import pyfiglet
 from google.oauth2.service_account import Credentials
@@ -36,10 +38,9 @@ def home_screen():
     """
     Offers the main menu options to the user. Takes a number input from the user and calls the function to offer the selected menu option.
     """
-    
     print(pyfiglet.figlet_format("Bank of Python", justify="center"))
     try:
-        option_choice = int(input('Please select from the following options by entering the corresponding number.\n1. Create a new account.\n2. Change your pin.\n3. Make a withdrawal.\n4. Exit program.\n\nEnter your selection number then press enter: '))
+        option_choice = int(input('Please select from the following options by entering the corresponding number.\n\n1. Create a new account.\n2. Change your pin.\n3. Make a withdrawal.\n4. Exit program.\n\nEnter your selection number then press enter: '))
     except ValueError as e:
         print('You did not enter a selection! Please try again.')
         clear_screen(2)
@@ -67,10 +68,11 @@ def add_new_name():
     Receives the users name, validates it, and adds it to an array which will be later pushed to the spreadsheet.
     """
     global new_user
+    print(pyfiglet.figlet_format("Create Account", justify="center"))
     print('Welcome to account creation.\n')
     
     try:
-        new_account_name = input('Please enter your full name and press enter: \n')
+        new_account_name = input('\nPlease enter your full name and press enter: ')
         if not new_account_name:
             raise ValueError()
     except ValueError as e:
@@ -78,7 +80,7 @@ def add_new_name():
         clear_screen(2)
         add_new_name()
     
-    print(f'Opening account for "{new_account_name}"…\n')
+    print(f'\n\nOpening account for "{new_account_name}"…\n')
     time.sleep(2)
     new_user.append(new_account_name)
     print('Account created successfully!\n')
@@ -90,12 +92,12 @@ def add_new_pin():
     Receives the users PIN input, validates it, and pushes it to the new_user array 
     """
     try:
-        new_account_pin = int(input('Please enter a 4 digit numerical pin\n'))
+        new_account_pin = int(input('Please enter a 4 digit numerical pin: \n'))
         if new_account_pin < 9999 and len(str(new_account_pin)) == 4:
-            print('Saving PIN…')
+            print('\n\nSaving PIN…')
             time.sleep(2)
             new_user.append(new_account_pin)
-            print('PIN Saved!\n')
+            print('\n\nPIN Saved!\n')
             clear_screen(2)
             add_new_balance()
         else:
@@ -116,13 +118,13 @@ def add_new_balance():
     global accounts_data
     os.system('cls' if os.name == 'nt' else 'clear')
     try:
-        new_deposit = int(input('Please enter your deposit amount, without commas: \n'))
+        new_deposit = int(input('Please enter your deposit amount, without commas: '))
     except ValueError as e:
         print('You did not enter a number! Please try again.')
         clear_screen(2)
         add_new_balance()
 
-    print(f'You entered {new_deposit}. Updating your account...\n')
+    print(f'\n\nYou entered {new_deposit}. Updating your account...\n')
     time.sleep(2)
     new_user.append(new_deposit)
     print('Deposit successful!\n')
@@ -134,7 +136,8 @@ def add_new_balance():
     print(f'Your account number is {account_current_number}. Don\'t forget to write it down!\n')
     print('THANK YOU, COME AGAIN!')
     clear_screen(5)
-    home_screen()
+    subprocess.call([sys.executable, os.path.realpath(__file__)] +
+sys.argv[1:])
 
 def change_pin_security():
     """
