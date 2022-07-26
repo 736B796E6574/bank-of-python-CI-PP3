@@ -92,6 +92,7 @@ def add_new_pin():
     """
     Receives the users PIN input, validates it, and pushes it to the new_user array 
     """
+    print(pyfiglet.figlet_format("Create Account", justify="center"))
     try:
         new_account_pin = int(input('Please enter a 4 digit numerical pin: \n'))
         if new_account_pin < 9999 and len(str(new_account_pin)) == 4:
@@ -118,6 +119,7 @@ def add_new_balance():
     global account_current_number
     global accounts_data
     os.system('cls' if os.name == 'nt' else 'clear')
+    print(pyfiglet.figlet_format("Create Account", justify="center"))
     try:
         new_deposit = int(input('Please enter your deposit amount, without commas: '))
     except ValueError as e:
