@@ -38,4 +38,14 @@ This option allows the user to enter their name, a PIN and a balance to be depos
 ![Screenshot 2022-07-26 at 16 50 01](https://user-images.githubusercontent.com/98256205/181052370-4bdadb93-0323-4b4d-9434-c4158859982c.png)
 ![Screenshot 2022-07-26 at 16 50 10](https://user-images.githubusercontent.com/98256205/181052382-3182bb60-ea70-4a74-ab27-87a69aff3f46.png)
 
+###Change PIN
+
+This option allows the user to change their PIN. They must provide their account number and current PIN. The program will then ask them to enter the new PIN 2 times to be sure that the new PINS match.
+
+![Screenshot 2022-07-26 at 16 54 16](https://user-images.githubusercontent.com/98256205/181053476-51ec6521-130e-43ed-a4be-1a9d68f533a5.png)
+![Screenshot 2022-07-26 at 16 54 32](https://user-images.githubusercontent.com/98256205/181053496-ff5d3d59-9059-4302-9a1c-5006e44dad66.png)
+![Screenshot 2022-07-26 at 16 54 43](https://user-images.githubusercontent.com/98256205/181053509-b46a1d8a-5510-4f9f-bdbf-bc1f60f77777.png)
+![Screenshot 2022-07-26 at 16 54 57](https://user-images.githubusercontent.com/98256205/181053522-893c86f9-ea9b-416e-a430-206797783d78.png)
+![Screenshot 2022-07-26 at 16 55 02](https://user-images.githubusercontent.com/98256205/181053538-edc6e27d-660e-4d8c-a3d9-69c17a338299.png)
+
 
