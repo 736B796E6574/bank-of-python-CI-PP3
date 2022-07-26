@@ -57,6 +57,8 @@ def home_screen():
         withdrawal_security()
     elif option_choice == 4:
         clear_screen(2)
+        print(pyfiglet.figlet_format("Goodbye!", justify="center"))
+        clear_screen(2)
         quit()
     else:
         print('Invalid selection!')
