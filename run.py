@@ -146,6 +146,7 @@ def change_pin_security():
     """
     global account_number
     os.system('cls' if os.name == 'nt' else 'clear')
+    print(pyfiglet.figlet_format("Change PIN", justify="center"))
     try:
         account_number = int(input('Please enter your account number: \n'))
     except ValueError as e:
@@ -173,6 +174,7 @@ def change_pin_security():
         change_pin_security()
     
 def change_pin():
+    print(pyfiglet.figlet_format("Change PIN", justify="center"))
     """
     Asks for the new PIN 2 times and they must match each other. It is the last function in this option.
     """
@@ -214,6 +216,7 @@ def withdrawal_security():
     global account_current_number
     global accounts_data
     os.system('cls' if os.name == 'nt' else 'clear')
+    print(pyfiglet.figlet_format("Withdrawal", justify="center"))
     try:
         account_number = int(input('Please enter your account number: \n'))
     except ValueError as e:
@@ -253,7 +256,7 @@ def withdrawal_security():
 def withdraw_money():
     global balance  
     os.system('cls' if os.name == 'nt' else 'clear')   
-    
+    print(pyfiglet.figlet_format("Withdrawal", justify="center"))
     try:
         withdrawal_amount = int(input('Your withdrawal must be a multiple of 10. \nPlease enter your withdrawal amount and press enter: '))
     except ValueError as e:
