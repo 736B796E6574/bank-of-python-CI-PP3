@@ -99,6 +99,17 @@ This app was deployed to Heroku. Below are the steps taken for its deployment
 
 To clone the project, navigate to the repository button on the GitHub and select zip or open with Github desktop. After that, copy and paste the link to your git terminal by clicking GitHub CLI and the copy button in the code dropdown menu.
 
+## Libraries
+
+The following libraries were utilised in building this project
+
+* Gspread to enable the opening, accessing and reading of googlesheet data.
+* Credentials they serve as unique identifiers required to access my API.
+* Time was used to create a timely flow of event as the customer performs transactions.
+* Pyfiglet was used to create the ASCII art headers.
+* Subprocess was used to cleanly restart the program due to a bug that I couldn't find. 
+* OS was used to clear the terminal during the programs running.
+
 
 
 
