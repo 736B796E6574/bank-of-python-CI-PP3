@@ -122,6 +122,7 @@ The following libraries were utilised in building this project
 * Ger Kelly for helping me to test the app and finding a bug I had missed. Also for suggesting Pyfiglet.
 * My mentor, Martina Terlevic for keeping me on the right track. 
 * Gaff for suggesting AutoPEP8 and saving me from manual refactoring.
+* gozygreg (on GitHub) whose readme was my template for this one. 
 
 
 
