@@ -8,7 +8,7 @@ import os
 import sys
 import subprocess
 import time
-import pyfigletx
+import pyfiglet
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
