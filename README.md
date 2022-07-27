@@ -1,6 +1,8 @@
 
 # Bank of Python
 
+Live version available here: [Bank of Python](https://bank-of-python.herokuapp.com/)
+
 ## About the Bank of Python
 
 The Bank of Python is a banking application that allows customers to open an account to deposit with the bank. They can change their PIN and also make a withdrawal, should they have the requested funds available in their account.
@@ -85,6 +87,11 @@ To test this program I have visited every possible outcome of the program. I hav
 
 ![Screenshot 2022-07-27 at 12 28 21](https://user-images.githubusercontent.com/98256205/181238141-dd2c8339-817e-41bb-9636-5274f6b6e275.png)
 
+## Bugs 
+
+* There was a bug that would not let the "Exit program" option to run properly when returning from the "Create Account" menu option. I couldd't seem to figure it out so had to get creative. Since it was the main menu I was able to install a library and use it to reset the program at that point giving us a clean start. This didn't fix the original bug but it regained the function of the program without affecting user experience so it was a satisfactory patch.
+* There were a lot of ways to crash this program with empty inputs or unexpected inputs. I systematically found and closed every one of these errors. I used try/except blocks to handle most of the errors.
+
 ## Deployment
 
 This app was deployed to Heroku. Below are the steps taken for its deployment
@@ -109,6 +116,13 @@ The following libraries were utilised in building this project
 * Pyfiglet was used to create the ASCII art headers.
 * Subprocess was used to cleanly restart the program due to a bug that I couldn't find. 
 * OS was used to clear the terminal during the programs running.
+
+## Acknowledgments
+
+* Ger Kelly for helping me to test the app and finding a bug I had missed. Also for suggesting Pyfiglet.
+* My mentor, Martina Terlevic for keeping me on the right track. 
+* Gaff for suggesting AutoPEP8 and saving me from manual refactoring.
+
 
 
 
