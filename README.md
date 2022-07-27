@@ -65,10 +65,12 @@ This option terminates the program.
 ## Database
 
 The Google Sheets API was utilised to store customer account information. It holds the name, PIN and balance.
+
 ![Screenshot 2022-07-26 at 17 07 01](https://user-images.githubusercontent.com/98256205/181056128-12380915-501a-40f8-aed8-b4b106e0f458.png)
 
 ## Testing
 
+To test this program I have visited every possible outcome of the program. I have repeated this process at various stages to ensure that the intended responses are provided. It has proved to be essential in locating bugs and optimising design. I also put the code through the PEP8 validator to check for conformity. All errors were taken on board and the code was refactored to remove them. I used to AutoPEP8 to speed up the refactoring process although some manual work was still needed to complete the process. I passed the deployed app around to a few fellow developers and asked them to break it and give feedback. The extra eyes gave me insight into some error handling cases that I had missed.
 
 
 
