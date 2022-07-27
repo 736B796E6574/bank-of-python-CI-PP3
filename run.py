@@ -234,7 +234,8 @@ def change_pin():
                 f'PIN change successful! Your new PIN is {second_attempt}.\n')
             print('THANK YOU, COME AGAIN!')
             clear_screen(5)
-            home_screen()
+            subprocess.call([sys.executable, os.path.realpath(__file__)] +
+                    sys.argv[1:])
         else:
             print('Your PIN did not match! Please try again.')
             time.sleep(2)
@@ -319,7 +320,8 @@ def withdraw_money():
         accounts.update_cell(account_number, 3, new_balance)
         print('THANK YOU, COME AGAIN!')
         clear_screen(5)
-        home_screen()
+        subprocess.call([sys.executable, os.path.realpath(__file__)] +
+                    sys.argv[1:])
 
 
 home_screen()
