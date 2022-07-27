@@ -30,7 +30,8 @@ account_current_number = len(accounts_data)
 
 def clear_screen(seconds):
     """
-    Pauses the program for a specified number of seconds and then clears the text from the terminal.
+    Pauses the program for a specified number of seconds and then clears
+    the text from the terminal.
     """
     time.sleep(seconds)
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -38,11 +39,17 @@ def clear_screen(seconds):
 
 def home_screen():
     """
-    Offers the main menu options to the user. Takes a number input from the user and calls the function to offer the selected menu option.
+    Offers the main menu options to the user. Takes a number input from
+    the user and calls the function to offer the selected menu option.
     """
     print(pyfiglet.figlet_format("Bank of Python", justify="center"))
     try:
-        option_choice = int(input('Please select from the following options by entering the corresponding number.\n\n1. Create a new account.\n2. Change your pin.\n3. Make a withdrawal.\n4. Exit program.\n\nEnter your selection number then press enter: '))
+        print('Please select by entering a number followed by enter.')
+        print('\n1. Create a new account.')
+        print('\n2. Change your pin.')
+        print('\n3. Make a withdrawal.')
+        print('\n4. Exit program.')
+        option_choice = int(input('\nEnter number here: '))
     except ValueError as e:
         print('You did not enter a selection! Please try again.')
         clear_screen(2)
@@ -70,7 +77,9 @@ def home_screen():
 
 def add_new_name():
     """
-    Receives the users name, validates it, and adds it to an array which will be later pushed to the spreadsheet.
+    Receives the users name, validates it,
+    and adds it to an array which will be
+    later pushed to the spreadsheet.
     """
     global new_user
     print(pyfiglet.figlet_format("Create Account", justify="center"))
@@ -96,7 +105,8 @@ def add_new_name():
 
 def add_new_pin():
     """
-    Receives the users PIN input, validates it, and pushes it to the new_user array
+    Receives the users PIN input,
+    validates it, and pushes it to the new_user array
     """
     print(pyfiglet.figlet_format("Create Account", justify="center"))
     try:
@@ -122,7 +132,10 @@ def add_new_pin():
 
 def add_new_balance():
     """
-    Receives the users deposit amount when opening the account. This is the last input required to open the account so the function pushes the new_user array to the spreadsheet to complete the account creations process.
+    Receives the users deposit amount when opening the account.
+    This is the last input required to open the account so the
+    function pushes the new_user array to the spreadsheet to
+    complete the account creations process.
     """
     global account_current_number
     global accounts_data
@@ -145,8 +158,9 @@ def add_new_balance():
     print('Your account creation was successful!\n')
     accounts_data = accounts.col_values(1)
     account_current_number = len(accounts_data)
-    print(
-        f'Your account number is {account_current_number}. Don\'t forget to write it down!\n')
+    account_message1 = f'Your account number is {account_current_number}.'
+    account_message2 = f'Don\'t forget to write it down!\n'
+    print(f'{account_message1} + {account_message2}')
     print('THANK YOU, COME AGAIN!')
     clear_screen(5)
     subprocess.call([sys.executable, os.path.realpath(__file__)] +
@@ -155,7 +169,9 @@ def add_new_balance():
 
 def change_pin_security():
     """
-    Takes the users account number and pin. Checks that the data matches the data stored in the spread sheet. If security is passed then change_pin() is called.
+    Takes the users account number and pin.
+    Checks that the data matches the data stored in the spread sheet.
+    If security is passed then change_pin() is called.
     """
     global account_number
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -190,7 +206,8 @@ def change_pin_security():
 def change_pin():
     print(pyfiglet.figlet_format("Change PIN", justify="center"))
     """
-    Asks for the new PIN 2 times and they must match each other. It is the last function in this option.
+    Asks for the new PIN 2 times and they must match each other. It is the
+    last function in this option.
     """
     global account_number
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -276,8 +293,9 @@ def withdraw_money():
     os.system('cls' if os.name == 'nt' else 'clear')
     print(pyfiglet.figlet_format("Withdrawal", justify="center"))
     try:
+        print('Your withdrawal must be a multiple of 10. \n')
         withdrawal_amount = int(input(
-            'Your withdrawal must be a multiple of 10. \nPlease enter your withdrawal amount and press enter: '))
+            'Please enter your withdrawal amount and press enter: '))
     except ValueError as e:
         print('Invalid input!')
         clear_screen(2)
@@ -295,7 +313,7 @@ def withdraw_money():
     else:
         os.system('cls' if os.name == 'nt' else 'clear')
         print(
-            f'Withdrawal successful! Please collect your ${withdrawal_amount} from the disk drive.')
+            f'Withdrawal successful! Please collect ${withdrawal_amount}.')
         new_balance = balance - withdrawal_amount
         print(f'Your new balance is ${new_balance}')
         accounts.update_cell(account_number, 3, new_balance)
