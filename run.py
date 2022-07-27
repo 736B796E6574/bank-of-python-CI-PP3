@@ -8,7 +8,7 @@ import os
 import sys
 import subprocess
 import time
-import pyfiglet
+import pyfigletx
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -160,7 +160,7 @@ def add_new_balance():
     account_current_number = len(accounts_data)
     account_message1 = f'Your account number is {account_current_number}.'
     account_message2 = f'Don\'t forget to write it down!\n'
-    print(f'{account_message1} + {account_message2}')
+    print(f'{account_message1} {account_message2}')
     print('THANK YOU, COME AGAIN!')
     clear_screen(5)
     subprocess.call([sys.executable, os.path.realpath(__file__)] +
