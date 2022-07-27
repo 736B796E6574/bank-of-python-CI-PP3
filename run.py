@@ -179,16 +179,19 @@ def change_pin_security():
     try:
         account_number = int(input('Please enter your account number: \n'))
     except ValueError as e:
+        print(pyfiglet.figlet_format("Change PIN", justify="center"))
         print('Invalid entry!')
         clear_screen(2)
         change_pin_security()
 
     if account_number < 1 or account_number > account_current_number:
+        print(pyfiglet.figlet_format("Change PIN", justify="center"))
         print('Invalid entry!')
         clear_screen(2)
         change_pin_security()
 
     old_pin = accounts.cell(account_number, 2).value
+    print(pyfiglet.figlet_format("Change PIN", justify="center"))
     current_pin = input('Please enter your current PIN and press enter: \n')
     if old_pin == current_pin:
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -198,6 +201,7 @@ def change_pin_security():
         change_pin()
     else:
         os.system('cls' if os.name == 'nt' else 'clear')
+        print(pyfiglet.figlet_format("Change PIN", justify="center"))
         print('Your information is incorrect! Please check and try again.\n')
         time.sleep(2)
         change_pin_security()
@@ -211,18 +215,22 @@ def change_pin():
     """
     global account_number
     os.system('cls' if os.name == 'nt' else 'clear')
+    print(pyfiglet.figlet_format("Change PIN", justify="center"))
     try:
         first_attempt = int(
             input('Please enter your new PIN and press enter: \n'))
         if first_attempt < 9999 and len(str(first_attempt)) == 4:
             second_attempt = int(
+                print(pyfiglet.figlet_format("Change PIN", justify="center"))
                 input('Please enter your new PIN again and press enter: \n'))
         else:
+            print(pyfiglet.figlet_format("Change PIN", justify="center"))
             print('Invalid entry. Please enter a 4 digit number.')
             clear_screen(2)
             change_pin()
 
     except ValueError as e:
+        print(pyfiglet.figlet_format("Change PIN", justify="center"))
         print('You did not enter a number. Please start again.')
         clear_screen(2)
         change_pin()
@@ -230,6 +238,7 @@ def change_pin():
     if first_attempt < 9999 and len(str(first_attempt)) == 4:
         if first_attempt == second_attempt:
             accounts.update_cell(account_number, 2, second_attempt)
+            print(pyfiglet.figlet_format("Change PIN", justify="center"))
             print(
                 f'PIN change successful! Your new PIN is {second_attempt}.\n')
             print('THANK YOU, COME AGAIN!')
@@ -237,11 +246,15 @@ def change_pin():
             subprocess.call([sys.executable, os.path.realpath(__file__)] +
                     sys.argv[1:])
         else:
+            print(pyfiglet.figlet_format("Change PIN", justify="center"))
             print('Your PIN did not match! Please try again.')
             time.sleep(2)
             change_pin()
     else:
+        print(pyfiglet.figlet_format("Change PIN", justify="center"))
         print('Invalid input. PIN must be 4 digits.')
+        change_pin()
+
 
 
 def withdrawal_security():
