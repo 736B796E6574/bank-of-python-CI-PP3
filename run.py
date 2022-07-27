@@ -179,13 +179,11 @@ def change_pin_security():
     try:
         account_number = int(input('Please enter your account number: \n'))
     except ValueError as e:
-        print(pyfiglet.figlet_format("Change PIN", justify="center"))
         print('Invalid entry!')
         clear_screen(2)
         change_pin_security()
 
     if account_number < 1 or account_number > account_current_number:
-        print(pyfiglet.figlet_format("Change PIN", justify="center"))
         print('Invalid entry!')
         clear_screen(2)
         change_pin_security()
