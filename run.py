@@ -220,8 +220,8 @@ def change_pin():
         first_attempt = int(
             input('Please enter your new PIN and press enter: \n'))
         if first_attempt < 9999 and len(str(first_attempt)) == 4:
+            print(pyfiglet.figlet_format("Change PIN", justify="center"))
             second_attempt = int(
-                print(pyfiglet.figlet_format("Change PIN", justify="center"))
                 input('Please enter your new PIN again and press enter: \n'))
         else:
             print(pyfiglet.figlet_format("Change PIN", justify="center"))
