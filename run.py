@@ -189,7 +189,6 @@ def change_pin_security():
         change_pin_security()
 
     old_pin = accounts.cell(account_number, 2).value
-    print(pyfiglet.figlet_format("Change PIN", justify="center"))
     current_pin = input('Please enter your current PIN and press enter: \n')
     if old_pin == current_pin:
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -218,7 +217,6 @@ def change_pin():
         first_attempt = int(
             input('Please enter your new PIN and press enter: \n'))
         if first_attempt < 9999 and len(str(first_attempt)) == 4:
-            print(pyfiglet.figlet_format("Change PIN", justify="center"))
             second_attempt = int(
                 input('Please enter your new PIN again and press enter: \n'))
         else:
@@ -236,7 +234,6 @@ def change_pin():
     if first_attempt < 9999 and len(str(first_attempt)) == 4:
         if first_attempt == second_attempt:
             accounts.update_cell(account_number, 2, second_attempt)
-            print(pyfiglet.figlet_format("Change PIN", justify="center"))
             print(
                 f'PIN change successful! Your new PIN is {second_attempt}.\n')
             print('THANK YOU, COME AGAIN!')
@@ -325,11 +322,11 @@ def withdraw_money():
     else:
         os.system('cls' if os.name == 'nt' else 'clear')
         print(
-            f'Withdrawal successful! Please collect ${withdrawal_amount}.')
+            f'Withdrawal successful! Please collect ${withdrawal_amount}.\n')
         new_balance = balance - withdrawal_amount
-        print(f'Your new balance is ${new_balance}')
+        print(f'Your new balance is ${new_balance}\n')
         accounts.update_cell(account_number, 3, new_balance)
-        print('THANK YOU, COME AGAIN!')
+        print('\nTHANK YOU, COME AGAIN!')
         clear_screen(5)
         subprocess.call([sys.executable, os.path.realpath(__file__)] +
                     sys.argv[1:])
